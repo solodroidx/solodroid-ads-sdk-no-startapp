@@ -7,8 +7,6 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 
 import com.google.ads.mediation.admob.AdMobAdapter;
-import com.google.ads.mediation.facebook.FacebookAdapter;
-import com.google.ads.mediation.facebook.FacebookExtras;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.admanager.AdManagerAdRequest;
@@ -31,15 +29,15 @@ public class Tools {
     }
 
     public static AdRequest getAdRequest(Activity activity, Boolean legacyGDPR) {
-        Bundle extras = new FacebookExtras().setNativeBanner(true).build();
+        //Bundle extras = new FacebookExtras().setNativeBanner(true).build();
         if (legacyGDPR) {
             return new AdRequest.Builder()
                     .addNetworkExtrasBundle(AdMobAdapter.class, LegacyGDPR.getBundleAd(activity))
-                    .addNetworkExtrasBundle(FacebookAdapter.class, extras)
+                    //.addNetworkExtrasBundle(FacebookAdapter.class, extras)
                     .build();
         } else {
             return new AdRequest.Builder()
-                    .addNetworkExtrasBundle(FacebookAdapter.class, extras)
+                    //.addNetworkExtrasBundle(FacebookAdapter.class, extras)
                     .build();
         }
     }
